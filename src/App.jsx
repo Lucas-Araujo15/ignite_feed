@@ -6,6 +6,45 @@ import styles from './App.module.css'
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/lucas-araujo15.png',
+      name: 'Lucas Araujo',
+      role: 'Full stack Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
+      },
+      { type: 'link', content: 'jane.design/doctorcare' }
+    ],
+    publishedAt: new Date('2023-02-17 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/lucas-araujo15.png',
+      name: 'Araujo Lucas',
+      role: 'Full stack Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
+      },
+      { type: 'link', content: 'jane.design/doctorcare' }
+    ],
+    publishedAt: new Date('2023-02-17 20:00:00')
+  }
+]
+
 export function App () {
   return (
     <div>
@@ -13,11 +52,15 @@ export function App () {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author='Lucas Araujo'
-            content='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet veniam sint laborum mollitia voluptas eum, voluptate rerum id dolor cupiditate deserunt, iusto possimus ipsam! Quisquam consequatur odio a tempore sunt.'
-          />
-          <Post author='Antonio Araujo' content='Um novo post muito legal' />
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
